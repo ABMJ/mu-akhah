@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mu'akhah | مؤاخاه – Two desks, one classroom</title>
+<meta name="description" content="Mu'akhah pairs students at international schools with students in remote areas so they can swap knowledge, share resources and make education fairer.">
+<meta name="theme-color" content="#14233F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314233F'/%3E%3Crect x='6' y='7' width='13' height='13' rx='3' fill='%23F2B632'/%3E%3Crect x='13' y='12' width='13' height='13' rx='3' fill='%234CC9A0' fill-opacity='.9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F1E8;--bg2:#EDE7D8;--ink:#14233F;--mut:#5A6580;--card:#FFFFFF;--line:#DDD6C4;
+  --brand:#14233F;--onbrand:#FFFFFF;--sun:#F2B632;--leaf:#1B7F5E;--leaf2:#E3F3EC;--coral:#C9401F;--chip:#EFE9DA;
+  --shadow:0 1px 2px rgba(20,35,63,.06),0 8px 24px -12px rgba(20,35,63,.18);
+  --r:20px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B1322;--bg2:#101B30;--ink:#EEF2FA;--mut:#9DABC4;--card:#14213A;--line:#26365A;
+  --brand:#F2B632;--onbrand:#0B1322;--leaf:#4CC9A0;--leaf2:#10312A;--coral:#FF8A6A;--chip:#1C2B49;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);}}
+:root[data-theme="dark"]{
+  --bg:#0B1322;--bg2:#101B30;--ink:#EEF2FA;--mut:#9DABC4;--card:#14213A;--line:#26365A;
+  --brand:#F2B632;--onbrand:#0B1322;--leaf:#4CC9A0;--leaf2:#10312A;--coral:#FF8A6A;--chip:#1C2B49;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px));-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1{font-size:clamp(36px,7vw,64px);line-height:1;letter-spacing:-.04em;font-weight:800}
+h2{font-size:clamp(26px,4vw,34px);letter-spacing:-.025em;font-weight:800;line-height:1.1}
+h3{font-size:18px;font-weight:600;line-height:1.25}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+.ar{font-family:"Cairo","Bricolage Grotesque",system-ui,sans-serif}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);background:none;border:0;padding:0;cursor:pointer}
+.logo{position:relative;width:36px;height:30px;flex:none}
+.logo i{position:absolute;width:21px;height:21px;border-radius:6px}
+.logo i:first-child{left:0;top:0;background:var(--sun)}
+.logo i:last-child{left:13px;top:8px;background:var(--leaf);opacity:.92}
+.brand b{font-size:25px;font-weight:800;line-height:1}
+.brand small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600;margin-top:2px;font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.dtabs{display:none;margin-left:auto;gap:4px}
+.dtabs button{background:none;border:0;color:var(--mut);font:inherit;font-weight:600;font-size:15px;padding:8px 14px;border-radius:999px;cursor:pointer;transition:background .15s,color .15s}
+.dtabs button:hover{background:var(--chip);color:var(--ink)}
+.dtabs button[aria-current="page"]{background:var(--brand);color:var(--onbrand)}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+
+svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:#14233F;color:#fff;border-radius:0 0 32px 32px}
+.hero::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1.2'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");}
+.hero::after{content:"";position:absolute;width:520px;height:520px;right:-120px;top:-160px;background:radial-gradient(circle,rgba(242,182,50,.28),transparent 65%)}
+.hero .wrap{position:relative;z-index:1;display:grid;gap:26px;padding-top:34px;padding-bottom:40px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+.eyebrow span{width:8px;height:8px;border-radius:50%;background:#4CC9A0}
+.hero h1 em{font-style:normal;color:var(--sun)}
+.hero .lead{font-size:clamp(17px,2.4vw,20px);color:#C9D4EA;max-width:30em;margin-top:16px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;background:var(--brand);color:var(--onbrand);border:0;border-radius:999px;padding:12px 22px;cursor:pointer;transition:transform .12s,box-shadow .12s,filter .12s;text-decoration:none}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn:active{transform:translateY(0)}
+.btn.sun{background:var(--sun);color:#14233F}
+.btn.light{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{background:var(--chip)}
+.btn.sm{padding:8px 16px;font-size:14px}
+.btn[disabled]{opacity:.55;cursor:default;transform:none;filter:none}
+.art{width:100%;max-width:440px;justify-self:center}
+.art svg{width:100%;height:auto;display:block}
+
+/* ---------- layout bits ---------- */
+.sec{display:none;padding-top:28px;animation:rise .35s ease both}.sec.on{display:block}
+#s-pair{padding-top:0}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.page-head{margin-bottom:20px}
+.page-head p{color:var(--mut);margin-top:8px;max-width:38em;font-size:17px}
+.split{display:grid;gap:22px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+.panel h2,.panel h3.ph{font-size:22px;margin-bottom:4px}
+.panel .sub{color:var(--mut);font-size:14px;margin-bottom:6px}
+label{display:block;font-weight:600;font-size:14px;margin:14px 0 5px}
+input,select,textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;transition:border-color .15s,box-shadow .15s}
+input:hover,select:hover,textarea:hover{border-color:var(--mut)}
+textarea{min-height:84px;resize:vertical}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--leaf);box-shadow:0 0 0 4px color-mix(in srgb,var(--leaf) 22%,transparent)}
+.panel .btn{margin-top:18px;width:100%}
+.grid{display:grid;gap:14px;grid-template-columns:1fr}
+
+/* ---------- stats & steps ---------- */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:26px 0 8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.stat span{font-size:14px;color:var(--mut)}
+.stat:nth-child(1) b{color:#2F6FDE}.stat:nth-child(2) b{color:var(--coral)}.stat:nth-child(3) b{color:#B7791F}.stat:nth-child(4) b{color:var(--leaf)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stat:nth-child(1) b{color:#7FA9FF}:root:not([data-theme="light"]) .stat:nth-child(3) b{color:var(--sun)}}
+:root[data-theme="dark"] .stat:nth-child(1) b{color:#7FA9FF}:root[data-theme="dark"] .stat:nth-child(3) b{color:var(--sun)}
+.steps{display:grid;gap:12px;margin-top:14px}
+.step{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.step .n{flex:none;width:36px;height:36px;border-radius:12px;background:var(--sun);color:#14233F;font-weight:800;display:grid;place-items:center}
+.step:nth-child(2) .n{background:#4CC9A0}.step:nth-child(3) .n{background:#FF9E85}
+.step p{color:var(--mut);font-size:15px;margin-top:2px}
+.band{margin-top:34px}
+.band>h2{margin-bottom:4px}
+.band>p{color:var(--mut)}
+.sdg{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.sdg span{font-size:13px;font-weight:700;padding:6px 12px;border-radius:8px;color:#fff}
+.sdg span:nth-child(1){background:#C5192D}.sdg span:nth-child(2){background:#DD1367}.sdg span:nth-child(3){background:#19486A}
+.safe{display:flex;gap:14px;background:var(--leaf2);border:1px solid color-mix(in srgb,var(--leaf) 35%,transparent);border-radius:18px;padding:16px;margin-top:18px}
+.safe svg{flex:none;color:var(--leaf)}
+.safe p{font-size:15px}
+
+/* ---------- cards ---------- */
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);transition:transform .15s,border-color .15s;animation:rise .35s ease both}
+.card:hover{transform:translateY(-2px)}
+.card .head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.card .head h3{flex:1;min-width:0}
+.card .head small{display:block;font-size:13px;color:var(--mut);font-weight:400}
+.card p.body{color:var(--ink);font-size:15.5px;margin:6px 0 2px}
+.card .act{margin-top:12px}
+.card.match{border:2px solid var(--leaf);background:linear-gradient(180deg,var(--leaf2),var(--card) 55%)}
+.av{--c:#2F6FDE;flex:none;width:42px;height:42px;border-radius:14px;background:var(--c);color:#fff;font-weight:800;font-size:18px;display:grid;place-items:center}
+.av.big{width:64px;height:64px;border-radius:20px;font-size:28px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+.tag{font-size:12.5px;font-weight:600;background:var(--chip);color:var(--mut);border-radius:8px;padding:3px 9px}
+.tag.sub{--c:#2F6FDE;background:color-mix(in srgb,var(--c) 14%,var(--card));color:color-mix(in srgb,var(--c) 72%,var(--ink))}
+.tag.hit{background:var(--leaf);color:#fff}
+.tag.kind{border:1px solid var(--line);background:transparent}
+.empty{color:var(--mut);padding:22px;border:1.5px dashed var(--line);border-radius:18px;text-align:center}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 15px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:background .15s}
+.chip:hover{background:var(--chip)}
+.chip.on{background:var(--brand);color:var(--onbrand);border-color:var(--brand)}
+
+/* swap visual */
+.swap{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:4px 0 6px;text-align:center}
+.swap div{background:var(--chip);border-radius:14px;padding:10px 6px;font-size:13px;color:var(--mut);line-height:1.25}
+.swap div b{display:block;color:var(--ink);font-size:15px;margin-top:2px}
+.swap svg{width:22px;height:22px;color:var(--leaf)}
+
+/* pair result */
+#pairR{margin-top:18px}
+.pairing{display:flex;align-items:center;justify-content:center;gap:0;margin:2px 0 16px}
+.pairing .av.big:first-child{background:var(--sun);color:#14233F}
+.pairing .av.big:last-child{background:var(--leaf);color:#fff}
+.pairing .line{flex:0 1 110px;height:4px;margin:0 8px;border-radius:4px;background:repeating-linear-gradient(90deg,var(--leaf) 0 10px,transparent 10px 18px);animation:dash 1s linear infinite;background-size:36px 4px}
+@keyframes dash{to{background-position:36px 0}}
+.msg{background:var(--chip);border-radius:14px;padding:14px;font-size:15px;margin:14px 0 10px;border-left:4px solid var(--sun)}
+.small{font-size:13.5px;color:var(--mut)}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.row .btn{margin-top:0;width:auto;flex:1}
+.panel .row .btn{margin-top:0}
+
+/* notes / footer */
+.note{display:flex;gap:12px;align-items:flex-start;border-left:5px solid var(--sun);padding:12px 14px;background:var(--card);border-radius:0 14px 14px 0;font-size:14.5px;margin:32px 0 14px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+footer{padding:6px 0 30px;color:var(--mut);font-size:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+
+/* mobile nav */
+.bnav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom,0px)}
+.bnav button{flex:1;background:none;border:0;color:var(--mut);padding:9px 2px 8px;font:inherit;font-size:11.5px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;position:relative}
+.bnav button[aria-current="page"]{color:var(--ink)}
+.bnav button[aria-current="page"]::before{content:"";position:absolute;top:0;left:22%;right:22%;height:3px;border-radius:0 0 4px 4px;background:var(--sun)}
+.bnav button[aria-current="page"] svg{stroke:var(--leaf)}
+
+#toast{position:fixed;left:50%;transform:translate(-50%,10px);bottom:calc(92px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:11px 20px;border-radius:999px;font-size:14.5px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:30;width:max-content;max-width:calc(100vw - 32px);text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (min-width:760px){
+  body{padding-bottom:0}
+  .dtabs{display:flex}
+  .bnav{display:none}
+  .hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;padding-top:56px;padding-bottom:64px}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .split{grid-template-columns:1.25fr 1fr}
+  .split .panel.sticky{position:sticky;top:84px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .pair-split{grid-template-columns:1fr 1fr}
+  #toast{bottom:28px}
+}
+
+/* ---- v2 additions ---- */
+.seg{display:flex;gap:4px;background:var(--chip);padding:4px;border-radius:999px;width:max-content;max-width:100%;overflow-x:auto;margin:0 0 22px;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg button{flex:none;background:none;border:0;font:inherit;font-size:14.5px;font-weight:600;color:var(--mut);padding:8px 16px;border-radius:999px;cursor:pointer}
+.seg button[aria-current="page"]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(20,35,63,.15)}
+.sec .wrap>.page-head:first-child{margin-top:0}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.tile b{display:block;font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.tile span{display:block;font-size:14px;color:var(--mut);margin-top:6px}
+.tile em{display:block;font-style:normal;font-size:12px;color:var(--mut);margin-top:8px;opacity:.85}
+.tile:nth-child(1) b{color:var(--coral)}.tile:nth-child(2) b{color:#B7791F}.tile:nth-child(3) b{color:#2F6FDE}.tile:nth-child(4) b{color:var(--leaf)}
+:root[data-theme="dark"] .tile:nth-child(2) b{color:var(--sun)}:root[data-theme="dark"] .tile:nth-child(3) b{color:#7FA9FF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tile:nth-child(2) b{color:var(--sun)}:root:not([data-theme="light"]) .tile:nth-child(3) b{color:#7FA9FF}}
+.block{margin-top:34px}
+.block>h2{margin-bottom:6px}.block>p{color:var(--mut);max-width:40em}
+.reasons{display:grid;gap:12px;margin-top:16px}
+.reason{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.reason i{flex:none;width:12px;border-radius:6px;background:var(--c,#C9401F)}
+.reason p{color:var(--mut);font-size:15px;margin-top:2px}
+.action{background:#14233F;color:#fff;border-radius:24px;padding:24px;margin-top:34px;position:relative;overflow:hidden}
+.action h2{color:#fff}.action p{color:#C9D4EA;margin-top:8px;max-width:38em}
+.action .btn{margin-top:18px}
+.srcs{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
+.srcs a{color:var(--ink);text-underline-offset:3px}
+.chat{display:flex;flex-direction:column;gap:8px;margin:14px 0 10px}
+.bub{max-width:85%;padding:10px 13px;border-radius:16px;font-size:15px;animation:rise .25s ease both}
+.bub.me{align-self:flex-end;background:var(--brand);color:var(--onbrand);border-bottom-right-radius:4px}
+.bub.them{align-self:flex-start;background:var(--chip);border-bottom-left-radius:4px}
+.composer{display:flex;gap:8px}.composer input{flex:1}.composer .btn{margin:0;width:auto}
+fieldset{border:0;margin:14px 0 0;padding:0}
+legend{font-weight:600;font-size:14px;padding:0;margin-bottom:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{display:inline-flex;align-items:center;gap:8px;margin:0;font-weight:600;font-size:14.5px;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;background:var(--bg)}
+.opts input{width:auto;accent-color:var(--leaf);margin:0}
+.opts label:has(input:checked){border-color:var(--leaf);background:var(--leaf2)}
+.bars{display:grid;gap:10px;margin-top:10px}
+.bar{display:grid;grid-template-columns:130px 1fr 36px;gap:10px;align-items:center;font-size:14px}
+.bar .t{height:12px;border-radius:8px;background:var(--chip);overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--leaf);border-radius:8px;transition:width .5s}
+.bar b{text-align:right}
+.rh{font-size:15px;font-weight:700;margin:20px 0 0}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl li{position:relative;padding:0 0 22px 52px}
+.tl li::before{content:"";position:absolute;left:17px;top:36px;bottom:0;width:2px;background:var(--line)}
+.tl li:last-child::before{display:none}
+.tl .n{position:absolute;left:0;top:0;width:36px;height:36px;border-radius:12px;background:var(--sun);color:#14233F;font-weight:800;display:grid;place-items:center}
+.tl li:nth-child(2) .n{background:#4CC9A0}.tl li:nth-child(3) .n{background:#FF9E85}.tl li:nth-child(4) .n{background:#9DB7FF}.tl li:nth-child(5) .n{background:#D9B8FF}
+.tl p{color:var(--mut);font-size:15px;margin-top:2px}
+.tl ul{margin:8px 0 0;padding-left:18px;color:var(--mut);font-size:14.5px}
+.tl .pill{display:inline-block;font-size:12px;font-weight:700;background:var(--leaf2);color:var(--leaf);border-radius:8px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+.video{aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:var(--chip);border:1.5px dashed var(--line);display:grid;place-items:center;text-align:center;color:var(--mut);padding:20px}
+.video iframe,.video video{width:100%;height:100%;border:0;display:block}
+@media (min-width:760px){.tiles{grid-template-columns:repeat(4,1fr)}.reasons{grid-template-columns:1fr 1fr}.two{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;align-items:start}}
+@media (max-width:560px){.seg{width:100%}.seg button{flex:1;padding:8px 6px;font-size:13.5px}}
+@media (max-width:420px){.bar{grid-template-columns:96px 1fr 30px}}
+
+/* ---- v3 additions ---- */
+#demoBtn{margin-left:auto;white-space:nowrap}
+.icon-btn{margin-left:8px}
+.head-row{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between}
+.head-row .btn{margin:0}
+.card .head{padding-right:30px}
+.del{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:10px;border:0;background:transparent;color:var(--mut);display:grid;place-items:center;cursor:pointer}
+.del:hover{background:var(--chip);color:var(--coral)}
+.del svg{width:18px;height:18px}
+.tag.loc{--c:#B7791F;background:color-mix(in srgb,var(--c) 16%,var(--card));color:color-mix(in srgb,var(--c) 70%,var(--ink))}
+.tag.loc.intl{--c:#2F6FDE}
+.tag.demo{background:transparent;border:1px dashed var(--line)}
+.dlg{border:0;border-radius:24px;padding:0;width:min(480px,calc(100% - 28px));color:var(--ink);background:var(--card);box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.dlg::backdrop{background:rgba(11,19,34,.55);backdrop-filter:blur(3px)}
+.dlg form{padding:22px;overflow:auto;max-height:calc(100dvh - 40px)}
+.dh{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.dh h3{font-size:22px;font-weight:800}
+.dlg .btn[type=submit]{width:100%;margin-top:18px}
+.x{margin:0!important;width:36px;height:36px;font-size:24px;line-height:1;flex:none}
+#toast.show{pointer-events:auto}
+#toast button{background:none;border:0;color:inherit;font:inherit;font-weight:800;margin-left:10px;cursor:pointer;text-decoration:underline}
+@media (min-width:760px){#demoBtn{margin-left:6px}}
+
+/* ---- v4 additions ---- */
+#s-home{padding-top:0}
+.tiles.three{grid-template-columns:1fr}
+.tile .lnk{display:inline-block;margin-top:0}
+.qb{margin-top:14px;padding:18px}
+.qh{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.qn{flex:none;width:32px;height:32px;border-radius:10px;background:var(--sun);color:#14233F;font-weight:800;display:grid;place-items:center}
+.qh select{flex:1;min-width:140px}
+.qa{display:flex;gap:6px;margin-left:auto}
+.panel .qa .btn,.qa .btn{width:auto;margin:0;padding:8px 12px;min-width:38px}
+.qa svg{width:17px;height:17px}
+.qb .chk{display:flex;align-items:center;gap:8px;font-weight:600;margin-top:12px;cursor:pointer}
+.qb .chk input{width:auto;accent-color:var(--leaf)}
+.ans{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.ans li{background:var(--chip);border-radius:12px;padding:10px 12px;font-size:15px}
+.svwrap{max-width:720px}
+.addq{margin-top:14px;width:100%}
+.mini{font-size:13px;color:var(--mut)}
+@media (min-width:760px){.tiles.three{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <button class="brand" data-tab="home" aria-label="Mu'akhah home">
+      <span class="logo" aria-hidden="true"><i></i><i></i></span>
+      <span><b class="ar" lang="ar" dir="rtl">مؤاخاه</b><small>Mu'akhah</small></span>
+    </button>
+    <nav class="dtabs" aria-label="Main" id="dtabs"></nav>
+    <button class="btn sun sm" id="demoBtn" type="button">Load demo data</button>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode"></button>
+  </div>
+</header>
+
+<!-- ============ HOME ============ -->
+<section class="sec on" id="s-home">
+  <div class="hero"><div class="wrap">
+    <div>
+      <span class="eyebrow"><span></span>Student action for fairer education</span>
+      <h1>Two desks,<br><em>one classroom.</em></h1>
+      <p class="lead">Pair a student at an international school with a student in a remote area. Each one shares something they know and learns something new, because knowledge should travel further than money or books.</p>
+      <div class="cta">
+        <button class="btn sun" data-tab="pair" data-focus="pn" type="button">Find my partner</button>
+        <button class="btn light" data-tab="problem" type="button">Why it matters</button>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true"><svg viewBox="0 0 440 360" fill="none">
+          <defs>
+            <radialGradient id="gl" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#2A4A7F"/><stop offset="1" stop-color="#16294A"/></radialGradient>
+          </defs>
+          <circle cx="220" cy="170" r="128" fill="url(#gl)" stroke="#ffffff" stroke-opacity=".25"/>
+          <g stroke="#ffffff" stroke-opacity=".2" fill="none">
+            <ellipse cx="220" cy="170" rx="128" ry="52"/><ellipse cx="220" cy="170" rx="52" ry="128"/>
+            <path d="M92 170h256M220 42v256"/>
+          </g>
+          <path d="M70 232 Q220 20 370 232" stroke="#F2B632" stroke-width="3.5" stroke-dasharray="3 10" stroke-linecap="round"/>
+          <rect x="176" y="62" width="88" height="40" rx="14" fill="#fff"/>
+          <path d="M214 102l8 12 8-12z" fill="#fff"/>
+          <circle cx="198" cy="82" r="5" fill="#F2B632"/><circle cx="220" cy="82" r="5" fill="#4CC9A0"/><circle cx="242" cy="82" r="5" fill="#FF9E85"/>
+          <!-- left desk -->
+          <g>
+            <circle cx="92" cy="248" r="22" fill="#F2B632"/><path d="M62 306c0-20 13-34 30-34s30 14 30 34z" fill="#F2B632"/>
+            <rect x="36" y="296" width="112" height="14" rx="5" fill="#fff"/><rect x="48" y="310" width="8" height="34" rx="3" fill="#fff" fill-opacity=".85"/><rect x="128" y="310" width="8" height="34" rx="3" fill="#fff" fill-opacity=".85"/>
+            <rect x="74" y="280" width="36" height="16" rx="3" fill="#14233F"/><rect x="78" y="284" width="28" height="3" rx="1.5" fill="#F2B632"/><rect x="78" y="289" width="18" height="3" rx="1.5" fill="#F2B632" fill-opacity=".6"/>
+          </g>
+          <!-- right desk -->
+          <g>
+            <circle cx="348" cy="248" r="22" fill="#4CC9A0"/><path d="M318 306c0-20 13-34 30-34s30 14 30 34z" fill="#4CC9A0"/>
+            <rect x="292" y="296" width="112" height="14" rx="5" fill="#fff"/><rect x="304" y="310" width="8" height="34" rx="3" fill="#fff" fill-opacity=".85"/><rect x="384" y="310" width="8" height="34" rx="3" fill="#fff" fill-opacity=".85"/>
+            <rect x="330" y="280" width="36" height="16" rx="3" fill="#14233F"/><rect x="334" y="284" width="28" height="3" rx="1.5" fill="#4CC9A0"/><rect x="334" y="289" width="18" height="3" rx="1.5" fill="#4CC9A0" fill-opacity=".6"/>
+          </g>
+          <g fill="#F2B632"><path d="M40 60l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/><path d="M404 120l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#4CC9A0"/><path d="M380 40l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z" fill="#fff"/></g>
+        </svg></div>
+  </div></div>
+
+  <div class="wrap">
+    <div class="block" id="homeGap" style="margin-top:30px">
+      <h2>The gap is real</h2>
+      <p>Not every child in Jordan gets the same chance to learn.</p>
+      <div class="tiles three" id="homeTiles" style="margin-top:16px"></div>
+      <p style="margin-top:12px"><button class="btn ghost sm" data-tab="problem" type="button">Read the full research</button></p>
+    </div>
+
+    <div class="block">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><div><h3>Say what you know</h3><p>Pick something you can teach, and something you want to learn.</p></div></div>
+        <div class="step"><span class="n">2</span><div><h3>Meet your partner</h3><p>A student in a city is matched with a student far from one.</p></div></div>
+        <div class="step"><span class="n">3</span><div><h3>Swap and grow</h3><p>Share what you learned today. Teach each other. Everyone learns a new skill.</p></div></div>
+      </div>
+      <div class="safe">
+        <svg class="i" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <p><b>Safety first.</b> Share first names only. Ask a teacher or parent before you message anyone. Real pairings should always be supervised by a teacher.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAIR UP ============ -->
+<section class="sec" id="s-pair"><div class="wrap">
+  <div class="page-head"><h2>Pair up</h2><p>Find a desk partner, then see who else is offering to swap.</p></div>
+  <div class="split pair-split">
+    <form class="panel" id="pairF">
+      <h3 class="ph">Find a desk partner</h3>
+      <p class="sub">Tell us what you can share and what you want to learn.</p>
+      <label for="pn">First name</label><input id="pn" required maxlength="30" placeholder="e.g. Sam" autocomplete="off">
+      <label for="pw">I am at</label>
+      <select id="pw"><option value="intl">An international school</option><option value="remote">A school in a remote area</option></select>
+      <label for="pt">I can share</label><select id="pt"></select>
+      <label for="pl">I want to learn</label><select id="pl"></select>
+      <label for="pk">Pair up as</label>
+      <select id="pk"><option value="student">Two students</option><option value="family">Two families</option></select>
+      <button class="btn" type="submit">Find my partner</button>
+      <p class="small" style="margin-top:12px">Share first names only. Ask a teacher or parent before you message anyone.</p>
+    </form>
+    <div id="pairR"><div class="empty" id="pairE">Your match will appear here.<br><span class="small">Fill in the form and press <b>Find my partner</b>.</span></div></div>
+  </div>
+
+  <div class="block">
+    <div class="page-head head-row"><div><h2>The Learning Exchange</h2><p>Share something you know in exchange for something you want to learn. A green match means two students can swap.</p></div><button class="btn" data-open="xchD" type="button">+ Offer an exchange</button></div>
+    <div class="grid" id="xchL"></div>
+  </div>
+  <dialog class="dlg" id="xchD" aria-labelledby="xchDT"><form id="xchF">
+    <div class="dh"><h3 id="xchDT">Offer an exchange</h3><button class="icon-btn x" data-close type="button" aria-label="Close">×</button></div>
+    <label for="xn">Your first name</label><input id="xn" required maxlength="30" autocomplete="given-name">
+    <label for="xo">I can teach</label><select id="xo"></select>
+    <label for="xw">I want to learn</label><select id="xw"></select>
+    <label for="xt">Details (optional)</label><textarea id="xt" maxlength="160" placeholder="e.g. Quick tricks for the 9 times table"></textarea>
+    <button class="btn" type="submit">Add exchange</button></form></dialog>
+</div></section>
+
+<!-- ============ RESOURCES ============ -->
+<section class="sec" id="s-lib"><div class="wrap">
+  <div class="seg" data-seg aria-label="Resources sections"><button data-tab="lib">Library</button><button data-tab="help">Help requests</button></div>
+  <div class="page-head head-row"><div><h2>Resource Library</h2><p>Free books, worksheets, videos and supplies shared by students and families.</p></div><button class="btn" data-open="resD" type="button">+ Add a resource</button></div>
+  <div class="chips" id="chips"></div><div class="grid" id="resL"></div>
+  <dialog class="dlg" id="resD" aria-labelledby="resDT"><form id="resF">
+    <div class="dh"><h3 id="resDT">Add a resource</h3><button class="icon-btn x" data-close type="button" aria-label="Close">×</button></div>
+    <label for="rb">Your first name</label><input id="rb" required maxlength="30" autocomplete="given-name">
+    <label for="rt">Title</label><input id="rt" required maxlength="60" autocomplete="off">
+    <label for="rs">Subject</label><select id="rs"></select>
+    <label for="rk">Type</label><select id="rk"><option>Worksheet</option><option>Book</option><option>Video</option><option>Game or activity</option><option>Supplies to donate</option></select>
+    <label for="rn">How to use it</label><textarea id="rn" maxlength="200"></textarea>
+    <button class="btn" type="submit">Add to library</button></form></dialog>
+</div></section>
+
+<section class="sec" id="s-help"><div class="wrap">
+  <div class="seg" data-seg aria-label="Resources sections"><button data-tab="lib">Library</button><button data-tab="help">Help requests</button></div>
+  <div class="page-head head-row"><div><h2>Help requests</h2><p>Stuck on a topic, or missing a resource? Post a request. Others can offer to help.</p></div><button class="btn" data-open="helpD" type="button">+ Ask for help</button></div>
+  <div class="grid" id="helpL"></div>
+  <dialog class="dlg" id="helpD" aria-labelledby="helpDT"><form id="helpF">
+    <div class="dh"><h3 id="helpDT">Post a request</h3><button class="icon-btn x" data-close type="button" aria-label="Close">×</button></div>
+    <label for="hn">Your first name</label><input id="hn" required maxlength="30" autocomplete="given-name">
+    <label for="hc">Topic</label><select id="hc"></select>
+    <label for="ht">What do you need?</label><textarea id="ht" required maxlength="200" placeholder="Be specific so a helper knows where to start"></textarea>
+    <button class="btn" type="submit">Post request</button></form></dialog>
+</div></section>
+
+<!-- ============ IDEAS ============ -->
+<section class="sec" id="s-idea"><div class="wrap">
+  <div class="page-head head-row"><div><h2>Share Ideas</h2><p>Ideas for making access to education fairer in your community. Like the ones you would try.</p></div><button class="btn" data-open="ideaD" type="button">+ Share an idea</button></div>
+  <div class="grid" id="ideaL"></div>
+  <dialog class="dlg" id="ideaD" aria-labelledby="ideaDT"><form id="ideaF">
+    <div class="dh"><h3 id="ideaDT">Share an idea</h3><button class="icon-btn x" data-close type="button" aria-label="Close">×</button></div>
+    <label for="in">Your first name</label><input id="in" required maxlength="30" autocomplete="given-name">
+    <label for="it">Your idea</label><textarea id="it" required maxlength="240" placeholder="Big or small, every action counts"></textarea>
+    <button class="btn" type="submit">Share idea</button></form></dialog>
+</div></section>
+
+<!-- ============ PROJECT: PROBLEM ============ -->
+<section class="sec" id="s-problem"><div class="wrap">
+  <div class="seg" data-seg aria-label="Project sections"><button data-tab="problem">The problem</button><button data-tab="survey">Survey</button><button data-tab="journey">My journey</button></div>
+  <div class="page-head head-row"><div><h2>The problem</h2><p>Not every child in Jordan gets the same chance to learn. Where you live and what your family can afford change what you can reach.</p></div><button class="btn ghost sm" data-open="statD" type="button">Edit numbers</button></div>
+  <div class="tiles" id="statTiles"></div>
+  <div class="block" id="reasonBlock">
+    <div class="page-head head-row"><div><h2 id="rTitle"></h2><p id="rIntro"></p></div><button class="btn ghost sm" data-open="reasonD" type="button">Edit reasons</button></div>
+    <div class="reasons" id="reasonL" style="margin-top:0"></div>
+  </div>
+  <div class="action">
+    <h2>Our action: pair students</h2>
+    <p>A student at an international school and a student in a remote area share what they know. Each one teaches and each one learns. Families can join in and use social media to stay in touch, always with a teacher's OK.</p>
+    <div class="sdg" style="margin-top:16px"><span>Goal 4 · Quality Education</span><span>Goal 10 · Reduced Inequalities</span><span>Goal 17 · Partnerships</span></div>
+    <button class="btn sun" data-tab="pair" type="button">Try the app</button>
+  </div>
+  <div class="block">
+    <h2>Sources</h2>
+    <ul class="srcs" id="srcL"></ul>
+  </div>
+<dialog class="dlg" id="reasonD" aria-labelledby="reasonDT"><form id="reasonF">
+    <div class="dh"><h3 id="reasonDT">Edit the reasons</h3><button class="icon-btn x" data-close type="button" aria-label="Close">×</button></div>
+    <div id="reasonEd"></div>
+    <button class="btn" type="submit">Done</button></form></dialog>
+  <dialog class="dlg" id="statD" aria-labelledby="statDT"><form id="statF">
+    <div class="dh"><h3 id="statDT">Edit numbers and sources</h3><button class="icon-btn x" data-close type="button" aria-label="Close">×</button></div>
+    <div id="statEd"></div>
+    <button class="btn" type="submit">Done</button></form></dialog>
+</div></section>
+
+<!-- ============ PROJECT: SURVEY (configurable) ============ -->
+<section class="sec" id="s-survey"><div class="wrap">
+  <div class="seg" data-seg aria-label="Project sections"><button data-tab="problem">The problem</button><button data-tab="survey">Survey</button><button data-tab="journey">My journey</button></div>
+  <div class="page-head"><h2>Survey</h2><p>Write your own questions, collect answers, and see the results.</p></div>
+  <div class="seg" id="svseg" aria-label="Survey steps"><button data-sv="build">1. Build</button><button data-sv="answer">2. Answer</button><button data-sv="results">3. Results</button></div>
+  <div class="svwrap" id="svBody"></div>
+</div></section>
+
+<!-- ============ PROJECT: JOURNEY ============ -->
+<section class="sec" id="s-journey"><div class="wrap">
+  <div class="seg" data-seg aria-label="Project sections"><button data-tab="problem">The problem</button><button data-tab="survey">Survey</button><button data-tab="journey">My journey</button></div>
+  <div class="page-head"><h2>My journey</h2><p>From spotting a problem to taking action, measuring it and reflecting on it.</p></div>
+  <div class="two">
+    <ol class="tl">
+      <li><span class="n">1</span><h3>Identify the problem <span class="pill">Done</span></h3><p>I researched how access to learning differs across Jordan.</p>
+        <ul><li>How many students are enrolled in Jordan?</li><li>How many students live in remote areas?</li><li>What share of children are not in school?</li><li>Why do students leave school?</li></ul></li>
+      <li><span class="n">2</span><h3>Take action <span class="pill">Done</span></h3><p>I made Mu'akhah, an app that pairs students (and families) at international schools with students in remote areas.</p></li>
+      <li><span class="n">3</span><h3>Measure the change</h3><p>I use a survey to see how people interact with the app, and whether they would use it.</p></li>
+      <li><span class="n">4</span><h3>Document the journey</h3><p>I recorded a video of the process. Watch it on the right.</p></li>
+      <li><span class="n">5</span><h3>Reflect</h3><p>After my presentation I will write about what I learned.</p></li>
+    </ol>
+    <div>
+      <div class="video" id="video"></div>
+      <div class="panel" style="margin-top:16px">
+        <h3 class="ph">My reflection</h3><p class="sub">Saved on this device as you type.</p>
+        <label for="rf1">What worked well?</label><textarea id="rf1" maxlength="400"></textarea>
+        <label for="rf2">What would I change?</label><textarea id="rf2" maxlength="400"></textarea>
+        <label for="rf3">What did I learn?</label><textarea id="rf3" maxlength="400"></textarea>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <div class="note"><svg class="i" viewBox="0 0 24 24" style="flex:none;color:#B7791F"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div><b>Prototype.</b> Everything you enter stays on this device. Nothing is sent to real students or schools yet. A real version needs an online database and teacher supervision.</div></div>
+  <footer><span>Made by a student, for students.</span><span class="row"><button class="btn sm" id="saveBtn" type="button">Save my changes</button><button class="btn ghost sm" id="loadBtn" type="button">Load saved file</button><button class="btn ghost sm" id="reset" type="button">Clear all data</button></span><input type="file" id="loadFile" accept=".json,application/json" hidden></footer>
+</div>
+
+<nav class="bnav" aria-label="Main" id="bnav"></nav>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+"use strict";
+/* Her saved changes get pasted here when the site is rebuilt (null means use the built-in defaults) */
+const BAKED=null;
+const B=BAKED||{};
+const cl=o=>JSON.parse(JSON.stringify(o));
+/* ---------- helpers ---------- */
+const SUB={"Maths":"#2F6FDE","English reading":"#1B7F5E","Science":"#8A4FD6","Local stories":"#C9401F","Art":"#D6336C","Languages":"#B7791F"};
+const SUBS=Object.keys(SUB);
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const AVC=["#2F6FDE","#C9401F","#8A4FD6","#1B7F5E","#D6336C","#B7791F","#0E8AA6"];
+const av=(name,big)=>{let h=0;for(const ch of String(name))h=(h*31+ch.charCodeAt(0))>>>0;const c=AVC[h%AVC.length];return `<span class="av${big?" big":""}" style="--c:${c}" aria-hidden="true">${esc((String(name).trim()[0]||"?").toUpperCase())}</span>`};
+const IC={
+ pair:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+ lib:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+ help:'<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>',
+ idea:'<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2V17h6v-.3c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/>',
+ problem:'<path d="M18 20V10M12 20V4M6 20v-6"/>',
+ comm:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+ survey:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+ journey:'<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>',
+ xch:'<path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
+ trash:'<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/>',
+ home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
+ res:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+ proj:'<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>',
+ moon:'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
+ sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'};
+
+const svg=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
+const TABS=[["home","Home"],["pair","Pair up"],["res","Resources"],["idea","Ideas"],["proj","Project"]];
+const GRP={lib:"res",help:"res",problem:"proj",survey:"proj",journey:"proj"};
+const tabOf=t=>GRP[t]||t;
+let last={res:"lib",proj:"problem"};
+$("#dtabs").innerHTML=TABS.map(t=>`<button data-tab="${t[0]}"${t[0]==="home"?' aria-current="page"':""}>${t[1]}</button>`).join("");
+$("#bnav").innerHTML=TABS.map(t=>`<button data-tab="${t[0]}"${t[0]==="home"?' aria-current="page"':""}>${svg(t[0]==="pair"?"pair":t[0]==="idea"?"idea":t[0])}<span>${t[1]}</span></button>`).join("");
+
+/* ---------- theme ---------- */
+const curTheme=()=>document.documentElement.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+function paintTheme(){$("#theme").innerHTML=svg(curTheme()==="dark"?"sun":"moon")}
+try{const t=localStorage.getItem("muakhah-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}
+paintTheme();
+$("#theme").addEventListener("click",()=>{const nx=curTheme()==="dark"?"light":"dark";document.documentElement.dataset.theme=nx;try{localStorage.setItem("muakhah-theme",nx)}catch(e){}paintTheme()});
+
+/* ---------- data ---------- */
+const EMPTY=()=>({res:[],help:[],idea:[],xch:[],demo:0});
+const KEY="muakhah-v3",NAME_KEY="muakhah-name";
+let S=B.entries?Object.assign(EMPTY(),cl(B.entries),{demo:0}):EMPTY();
+try{const t=localStorage.getItem(KEY);if(t){const p=JSON.parse(t);if(p&&p.res&&p.help&&p.idea&&p.xch)S=p}}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const myName=()=>{try{return localStorage.getItem(NAME_KEY)||""}catch(e){return""}};
+const rememberName=n=>{n=(n||"").trim();if(n){try{localStorage.setItem(NAME_KEY,n)}catch(e){}}};
+const prefill=()=>{const n=myName();if(!n)return;["#pn","#rb","#hn","#in","#xn"].forEach(i=>{if(!$(i).value)$(i).value=n})};
+
+/* ---------- demo data (made-up people, flagged "Demo") ---------- */
+const NAMES_R=["Amara","Tariq","Lupe","Sana","Hana","Dina","Zaid","Rania","Khalid","Salma","Fadi","Nour","Aya","Bilal","Maryam","Hassan","Rawan","Yara"];
+const NAMES_I=["Noah","Mei","Elena","Kofi","Layla","Omar","Yusuf","Sofia","Ravi","Chloe","Lucas","Aiko","Mateo","Priya","Emma","Ahmed","Leila","Jonas"];
+const person=n=>n%2===0?{by:NAMES_R[(n/2)%18|0],loc:"remote"}:{by:NAMES_I[((n-1)/2)%18|0],loc:"intl"};
+function buildDemo(){
+  const D={res:[],help:[],idea:[],xch:[]};
+  const R=[
+   ["Maths",[["Multiplication tricks sheet","Worksheet","Fingers trick for the 9 times table, plus doubling shortcuts."],["Fractions with pizza drawings","Worksheet","Cut a drawn pizza into halves, quarters and eighths."],["Mental maths card game","Game or activity","Flip two playing cards, then add or multiply them."],["Class set of rulers and notebooks","Supplies to donate","30 notebooks and 30 rulers ready to send to a partner school."],["Shapes hunt at home","Game or activity","Find circles, squares and triangles around your house and draw them."]]],
+   ["English reading",[["Short reading passages, levels 1 to 3","Worksheet","Print or copy by hand. Each passage has 3 questions."],["Reading aloud club guide","Game or activity","Take turns reading one page each, then ask each other one question."],["Picture story starters","Worksheet","Look at the picture and write three sentences about it."],["Printable story books for ages 8 to 10","Book","Twenty short stories with pictures. Print double-sided and fold."],["Spelling bee word lists","Worksheet","Weekly lists of ten words with example sentences."]]],
+   ["Science",[["Offline science videos","Video","Download once on Wi-Fi, share by memory card."],["Baking soda volcano at home","Game or activity","Needs vinegar, baking soda and a bottle. No lab needed."],["Rain gauge from a bottle","Game or activity","Cut a plastic bottle, add a ruler and record rainfall each day."],["Plant growth diary","Worksheet","Grow a bean in a cup and draw it every two days."],["Our solar system poster","Worksheet","Cut out the planets and stick them in order from the sun."]]],
+   ["Local stories",[["Harvest stories told by grandparents","Book","Ten short stories written down by students. Great for reading aloud."],["Village folk tales, recorded","Video","Short recordings you can play on a phone without internet."],["Proverbs from our region","Worksheet","Collect ten proverbs and explain what each one means."],["Family recipe stories","Book","Students write how a family dish is made and why it matters."],["Our town history timeline","Worksheet","Interview an elder and mark five events on a timeline."]]],
+   ["Art",[["Draw your village map","Game or activity","Use pencils and any paper. Mark the school, the well and your favourite tree."],["Painting with natural colours","Video","Make paint from spices, leaves and clay."],["Paper weaving patterns","Worksheet","Cut strips of paper and weave simple patterns."],["Coloured pencils and paper pack","Supplies to donate","A box of 20 pencils and 100 sheets for a partner class."],["Calligraphy practice sheet","Worksheet","Trace the letters, then design your own name."]]],
+   ["Languages",[["Picture dictionary: Arabic and English","Worksheet","50 everyday words with drawings. Cut out and make flash cards."],["Greetings around the world","Worksheet","Say hello in ten languages with simple sounds."],["Pen pal letter template","Worksheet","Start a letter with five easy sentences."],["Alphabet song videos","Video","Short songs to practise letters and sounds."],["Word match cards","Game or activity","Match words in two languages and play memory."]]]];
+  let n=0;
+  for(let k=0;k<5;k++)R.forEach(g=>{const r=g[1][k];D.res.push(Object.assign({t:r[0],sub:g[0],kind:r[1],n:r[2]},person(n++)))});
+  const H=[
+   ["Maths",["Can someone explain fractions with a drawing?","How do I remember the 7 times table?","We need practice sheets for long division.","What is an easy way to learn geometry shapes?","Does anyone have maths games that need no electricity?"]],
+   ["English reading",["We have no English story books for ages 8 to 10. Does anyone have printable ones?","I want to practise speaking English with a partner once a week.","How can I read faster without skipping words?","Can someone help me with the sounds of th and v?","We need easy reading passages with questions."]],
+   ["Science",["Our school has no science lab. What experiments can we do with things from home?","How do plants make food? A drawing would help.","Why does the moon change shape?","Is there a simple way to show how water gets cleaned?","We would like to learn about weather and measure rain."]],
+   ["Local stories",["How do we write down a story told by our grandmother?","Can we record stories on a phone and share them safely?","What questions should I ask an elder for a story project?","We want to make a class book of village tales. Any tips?","How can I share my region's stories with a student far away?"]],
+   ["Art",["We need paper and coloured pencils for our art lesson. Any ideas where to find them?","How do I draw faces so they look real?","Can someone teach us easy patterns to paint?","What can we make from recycled materials?","How do we mix colours without a paint set?"]],
+   ["Languages",["Can someone teach me common Arabic greetings for my pen pal?","How do I say thank you in French and Spanish?","What is a good way to remember new words?","Can we practise English and Arabic together on a video call?","Does anyone have a picture dictionary we can print?"]]];
+  n=1;
+  for(let k=0;k<5;k++)H.forEach(g=>{D.help.push(Object.assign({t:g[1][k],cat:g[0],c:(n*3)%5,me:0},person(n)));n++});
+  const I=["Each international class adopts one remote class and sends one lesson plan a month.","Families record 2-minute voice messages of local stories to share on social media.","Collect used books and pens during one school week and send them to a partner school.","Make a printable “lesson in a bag” that works without internet.","Hold a monthly video call where partner classes show a science experiment.","Older students volunteer as homework buddies once a week.","Parents share their jobs in short talks: farmer, nurse, engineer.","Teachers approve every pairing so students stay safe.","Start a pen pal letter exchange between partner classes.","Record a short “word of the week” video in two languages.","Share spare tablets and phones with remote schools for reading apps.","Run a bake sale and use the money to buy books for a partner school.","Create a shared photo wall of both classrooms.","Students teach a five-minute skill to a younger class every Friday.","Build a small library box in the village square.","Translate story books into the languages students speak at home.","Host a school fair where each class presents a region.","Make a map showing where every partner school is.","Parents from the international school visit the remote school once a term.","Print lesson packs and deliver them with school transport.","Share free learning websites in a one-page guide.","Start a buddy reader programme: older students read to younger ones.","Teach digital safety before any online messages are sent.","Collect old uniforms and school bags for students who need them.","Give every partner pair a certificate to celebrate.","Make a class podcast where both schools share what they learned.","Set up a school bus fund to help students who walk far.","Use WhatsApp groups for parents, moderated by a teacher.","Hold a yearly swap day where classes exchange projects.","Ask local businesses to sponsor notebooks and pencils."];
+  I.forEach((t,i)=>D.idea.push(Object.assign({t,l:((i*5)%9)+2,me:0},person(i+3))));
+  const T={"Maths":"Easy tricks for times tables and fractions.","English reading":"Reading practice with short stories.","Science":"Simple experiments with everyday things.","Local stories":"Folk tales and family stories from our area.","Art":"Drawing, painting and craft ideas.","Languages":"Greetings and everyday words."};
+  const pairs=[];for(let i=0;i<6;i++)for(let j=i+1;j<6;j++)pairs.push([SUBS[i],SUBS[j]]);
+  const off=(o,w,loc)=>{const q=D.xch.filter(x=>x.loc===loc).length;const nm=loc==="intl"?NAMES_I[q%18]:NAMES_R[q%18];D.xch.push({o,w,by:nm,loc,t:T[o]})};
+  pairs.slice(0,9).forEach(p=>{off(p[0],p[1],"intl");off(p[1],p[0],"remote")});
+  pairs.slice(9).forEach((p,k)=>k%2?off(p[1],p[0],"remote"):off(p[0],p[1],"intl"));
+  pairs.slice(0,6).forEach(p=>off(p[0],p[1],"intl"));
+  return D}
+const DEMO=buildDemo();
+const GROUPS=["res","help","idea","xch"];
+function loadDemo(){
+  removeDemo(true);
+  GROUPS.forEach(k=>DEMO[k].forEach(x=>{const y=JSON.parse(JSON.stringify(x));y.d=1;S[k].push(y)}));
+  S.demo=1;save();all();paintDemo();
+  toast("Demo data loaded: resources, requests, ideas and swaps")}
+function removeDemo(quiet){
+  GROUPS.forEach(k=>{S[k]=S[k].filter(x=>!x.d)});
+  S.demo=0;save();all();paintDemo();if(!quiet)toast("Demo data removed")}
+function paintDemo(){const b=$("#demoBtn");b.textContent=S.demo?"Remove demo data":"Load demo data";b.className="btn sm "+(S.demo?"ghost":"sun")}
+
+let toastT,undoFn=null;
+const toast=(m,label,fn)=>{const t=$("#toast");undoFn=fn||null;t.innerHTML=esc(m)+(label?` <button type="button" data-undo="1">${esc(label)}</button>`:"");t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),label?5500:2600)};
+const fill=(id,a)=>{$(id).innerHTML=a.map(x=>`<option>${x}</option>`).join("")};
+["#pt","#pl","#rs","#hc","#xo","#xw"].forEach(i=>fill(i,SUBS));
+$("#pl").selectedIndex=1;$("#xw").selectedIndex=1;
+
+/* ---------- rendering ---------- */
+const subTag=s=>`<span class="tag sub" style="--c:${SUB[s]||"#555"}">${esc(s)}</span>`;
+const tag=(t,hit)=>`<span class="tag${hit?" hit":""}">${esc(t)}</span>`;
+const who=x=>(x.loc?`<span class="tag loc ${x.loc}">${x.loc==="remote"?"Remote area":"International school"}</span>`:"")+(x.d?'<span class="tag demo">Demo</span>':"");
+const empty=(a,b)=>`<div class="empty" style="grid-column:1/-1">${a}<br><span class="small">${b}</span></div>`;
+const HINT="Tap the + button above, or load demo data at the top.";
+function card({name,sub,title,tags,body,act,cls,i,del}){
+  return `<article class="card ${cls||""}" style="animation-delay:${Math.min(i||0,8)*40}ms">${del?`<button class="del" data-del="${del}" type="button" aria-label="Delete this entry" title="Delete">${svg("trash")}</button>`:""}<div class="head">${av(name)}<h3>${title}${sub?`<small>${esc(sub)}</small>`:""}</h3></div><div class="tags" style="margin-top:0">${tags||""}</div>${body?`<p class="body">${esc(body)}</p>`:""}${act?`<div class="act">${act}</div>`:""}</article>`}
+
+let flt="All";
+function rRes(){
+  $("#chips").innerHTML=["All"].concat(SUBS).map(x=>`<button class="chip${x===flt?" on":""}" data-f="${x}">${x}</button>`).join("");
+  const L=S.res.map((r,i)=>[r,i]).filter(p=>flt==="All"||p[0].sub===flt);
+  $("#resL").innerHTML=L.length?L.map((p,n)=>{const r=p[0];return card({name:r.by,sub:"Shared by "+r.by,title:esc(r.t),tags:subTag(r.sub)+`<span class="tag kind">${esc(r.kind)}</span>`+who(r),body:r.n,i:n,del:"res:"+p[1]})}).join(""):empty(flt==="All"?"No resources yet.":"Nothing here for this subject yet.",HINT)}
+function rHelp(){
+  $("#helpL").innerHTML=S.help.length?S.help.map((h,i)=>card({name:h.by,sub:h.by+" asks",title:esc(h.cat),tags:subTag(h.cat)+tag(h.c+(h.c===1?" person offered":" people offered")+" to help",h.c>0)+who(h),body:h.t,act:`<button class="btn ghost sm" data-help="${i}"${h.me?" disabled":""}>${h.me?"You offered to help":"I can help"}</button>`,i,del:"help:"+i})).join(""):empty("No requests yet.",HINT)}
+function rIdea(){
+  $("#ideaL").innerHTML=S.idea.length?S.idea.map((d,i)=>card({name:d.by,title:esc(d.by)+"’s idea",tags:tag(d.l+(d.l===1?" like":" likes"))+who(d),body:d.t,act:`<button class="btn ghost sm" data-like="${i}"${d.me?" disabled":""}>${d.me?"Liked":"Like this idea"}</button>`,i,del:"idea:"+i})).join(""):empty("No ideas yet.",HINT)}
+function rXch(){
+  $("#xchL").innerHTML=S.xch.length?S.xch.map((x,i)=>{
+    const m=S.xch.find((y,j)=>j!==i&&y.o===x.w&&y.w===x.o);
+    const sw=`<div class="swap"><div>Teaches<b>${esc(x.o)}</b></div>${svg("xch")}<div>Wants<b>${esc(x.w)}</b></div></div>`;
+    return card({name:x.by,title:esc(x.by),tags:(m?tag("Match: "+m.by,1):tag("Waiting for a match"))+who(x),act:sw+(x.t?`<p class="body" style="margin:6px 0 0">${esc(x.t)}</p>`:"")+(m?`<div style="margin-top:12px"><button class="btn sm" data-xm="${i}">Say hello to ${esc(m.by)}</button></div>`:""),cls:m?"match":"",i,del:"xch:"+i})}).join(""):empty("No exchanges yet.",HINT)}
+const all=()=>{rRes();rHelp();rIdea();rXch()};
+all();
+
+/* ---------- survey builder (all questions written by the user) ---------- */
+const QT={text:"Short answer",long:"Long answer",one:"Choose one",many:"Choose many",yn:"Yes / No",rate:"Rating 1 to 5"};
+const SVK="muakhah-sv",SRK="muakhah-sr";
+let SV=B.survey?cl(B.survey):{title:"",qs:[]},SR=[],svMode="build";
+try{const t=JSON.parse(localStorage.getItem(SVK)||"null");if(t&&Array.isArray(t.qs))SV=t}catch(e){}
+try{const t=JSON.parse(localStorage.getItem(SRK)||"null");if(Array.isArray(t))SR=t}catch(e){}
+const svSave=()=>{try{localStorage.setItem(SVK,JSON.stringify(SV))}catch(e){}};
+const srSave=()=>{try{localStorage.setItem(SRK,JSON.stringify(SR))}catch(e){}};
+const optsOf=q=>q.type==="yn"?["Yes","No"]:String(q.o||"").split("\n").map(x=>x.trim()).filter(Boolean);
+const qid=()=>"q"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const filled=v=>Array.isArray(v)?v.length>0:String(v||"").length>0;
+
+function qCard(q,i){
+  const n=SV.qs.length;
+  return `<div class="panel qb"><div class="qh"><span class="qn">${i+1}</span>
+    <select data-qf="type" data-qi="${i}" aria-label="Question type">${Object.keys(QT).map(k=>`<option value="${k}"${k===q.type?" selected":""}>${QT[k]}</option>`).join("")}</select>
+    <div class="qa"><button class="btn ghost sm" data-qup="${i}" type="button" aria-label="Move up"${i===0?" disabled":""}>↑</button><button class="btn ghost sm" data-qdown="${i}" type="button" aria-label="Move down"${i===n-1?" disabled":""}>↓</button><button class="btn ghost sm" data-qdel="${i}" type="button" aria-label="Delete question">${svg("trash")}</button></div></div>
+    <input data-qf="t" data-qi="${i}" value="${esc(q.t)}" maxlength="200" placeholder="Type your question" aria-label="Question ${i+1}">
+    ${q.type==="one"||q.type==="many"?`<label>Options (one per line)</label><textarea data-qf="o" data-qi="${i}" placeholder="Option A&#10;Option B&#10;Option C">${esc(q.o||"")}</textarea>`:""}
+    <label class="chk"><input type="checkbox" data-qf="req" data-qi="${i}"${q.req?" checked":""}> Required</label></div>`}
+function vBuild(){
+  return `<div class="panel"><label for="svt" style="margin-top:0">Survey title</label><input id="svt" data-qf="title" maxlength="80" value="${esc(SV.title)}" placeholder="Give your survey a name">
+    <p class="mini" style="margin-top:8px">Add your own questions below. Answers are saved on this device only.</p></div>`
+   +(SV.qs.length?SV.qs.map(qCard).join(""):`<div style="margin-top:14px">${empty("No questions yet.","Press + Add question to write your first one.")}</div>`)
+   +`<button class="btn addq" data-addq="1" type="button">+ Add question</button>`}
+function vAnswer(){
+  if(!SV.qs.length)return empty("No questions yet.","Go to 1. Build and add some questions first.");
+  const inp=(type,q,v,l)=>`<label><input type="${type}" name="${q.id}" value="${esc(v)}"> ${esc(l!==undefined?l:v)}</label>`;
+  return `<form class="panel" id="ansF"><h3 class="ph">${esc(SV.title||"Survey")}</h3><p class="sub">Answers are saved on this device.</p>`
+   +SV.qs.map(q=>{
+     let f="";
+     if(q.type==="text")f=`<input name="${q.id}" maxlength="200" aria-label="${esc(q.t)}">`;
+     else if(q.type==="long")f=`<textarea name="${q.id}" maxlength="600" aria-label="${esc(q.t)}"></textarea>`;
+     else if(q.type==="one"||q.type==="yn")f=`<div class="opts">${optsOf(q).map(o=>inp("radio",q,o)).join("")}</div>`;
+     else if(q.type==="many")f=`<div class="opts">${optsOf(q).map(o=>inp("checkbox",q,o)).join("")}</div>`;
+     else if(q.type==="rate")f=`<div class="opts">${[1,2,3,4,5].map(n=>inp("radio",q,n)).join("")}</div>`;
+     return `<fieldset><legend>${esc(q.t||"Untitled question")}${q.req?" *":""}</legend>${f}</fieldset>`}).join("")
+   +`<button class="btn" type="submit">Send my answers</button></form>`}
+function bars(items,total){return `<div class="bars">${items.map(x=>`<div class="bar"><span>${esc(x[0])}</span><span class="t"><i style="width:${total?Math.round(x[1]/total*100):0}%"></i></span><b>${x[1]}</b></div>`).join("")}</div>`}
+function vResults(){
+  if(!SV.qs.length)return empty("No questions yet.","Go to 1. Build and add some questions first.");
+  if(!SR.length)return empty("No answers yet.","Use 2. Answer to collect the first response.");
+  const head=`<div class="panel"><h3 class="ph">${esc(SV.title||"Survey")}</h3><p class="sub">${SR.length} ${SR.length===1?"response":"responses"} on this device.</p><div class="row" style="margin-top:6px"><button class="btn ghost sm" data-csv="1" type="button">Download CSV</button><button class="btn ghost sm" data-clrr="1" type="button">Clear responses</button></div></div>`;
+  return head+SV.qs.map((q,i)=>{
+    const vals=SR.map(r=>r.a[q.id]).filter(filled);const n=vals.length;
+    let out="";
+    if(q.type==="one"||q.type==="many"||q.type==="yn")out=bars(optsOf(q).map(o=>[o,vals.filter(v=>Array.isArray(v)?v.indexOf(o)>-1:v===o).length]),n);
+    else if(q.type==="rate"){const avg=n?(vals.reduce((a,b)=>a+Number(b),0)/n).toFixed(1):"–";out=`<p style="margin:6px 0 0"><b style="font-size:26px">${avg}</b> <span class="small">average out of 5</span></p>`+bars([1,2,3,4,5].map(k=>[k+" star"+(k>1?"s":""),vals.filter(v=>Number(v)===k).length]),n)}
+    else out=`<ul class="ans">${vals.slice().reverse().map(v=>`<li>${esc(v)}</li>`).join("")||'<li class="small">No answers yet.</li>'}</ul>`;
+    return `<div class="panel qb"><h3>${i+1}. ${esc(q.t||"Untitled question")}</h3><p class="mini" style="margin-top:2px">${n} ${n===1?"answer":"answers"}</p>${out}</div>`}).join("")}
+function rSurvey(){
+  document.querySelectorAll("#svseg [data-sv]").forEach(b=>{b.dataset.sv===svMode?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current")});
+  $("#svBody").innerHTML=svMode==="build"?vBuild():svMode==="answer"?vAnswer():vResults()}
+document.addEventListener("input",e=>{const t=e.target,f=t.dataset&&t.dataset.qf;if(!f)return;
+  if(f==="title")SV.title=t.value;else{const q=SV.qs[+t.dataset.qi];if(!q)return;if(f==="t")q.t=t.value;if(f==="o")q.o=t.value}svSave()});
+document.addEventListener("change",e=>{const t=e.target,f=t.dataset&&t.dataset.qf;if(!f)return;const q=SV.qs[+t.dataset.qi];if(!q)return;
+  if(f==="type"){q.type=t.value;svSave();rSurvey()}if(f==="req"){q.req=t.checked?1:0;svSave()}});
+document.addEventListener("submit",e=>{if(e.target.id!=="ansF")return;e.preventDefault();const f=e.target,a={};let bad=null;
+  SV.qs.forEach(q=>{let v;
+    if(q.type==="many")v=[...f.querySelectorAll(`input[name="${q.id}"]:checked`)].map(x=>x.value);
+    else if(q.type==="text"||q.type==="long")v=f.querySelector(`[name="${q.id}"]`).value.trim();
+    else{const c=f.querySelector(`input[name="${q.id}"]:checked`);v=c?c.value:""}
+    if(q.req&&!filled(v)&&!bad)bad=q;a[q.id]=v});
+  if(bad){toast("Please answer: "+(bad.t||"a required question"));return}
+  SR.push({at:Date.now(),a});srSave();f.reset();toast("Thank you! Your answers are saved.")});
+
+
+/* ---------- editable numbers and sources (Problem page) ---------- */
+const clone=o=>JSON.parse(JSON.stringify(o));
+const STATS0=B.stats||[{v:"112,016",l:"children in grades 1 to 10 are out of school",s:"UNICEF, 2020 (2017/18 data)"},{v:"6.2%",l:"of children of school age are out of school",s:"UNICEF, 2020 (2017/18 data)"},{v:"4.7%",l:"of children aged 6 to 11 are out of school",s:"UNICEF, 2020 (2017/18 data)"},{v:"~6 km",l:"is how far some students in hilly Jerash walk to school",s:"Jordan News, Aug 2026"}];
+const SRCS0=B.sources||[{t:"UNICEF Jordan: Report provides data on out-of-school children in Jordan",u:"https://www.unicef.org/jordan/press-releases/report-provides-data-out-school-children-jordan-covid-19-pandemic"},{t:"UNICEF Jordan: Country Report on Out-of-School Children",u:"https://www.unicef.org/jordan/reports/jordan-country-report-out-school-children"},{t:"The New Arab: Jordanian children forced into work and marriage",u:"https://www.newarab.com/analysis/jordanian-children-forced-work-and-marriage"},{t:"Jordan News: In Jerash, the road to school is often as hard as the classroom",u:"https://www.jordannews.jo/Section-109/News/In-Jerash-the-Road-to-School-Is-Often-as-Hard-as-the-Classroom-Itself-54987"}];
+const QUICK=[["Students enrolled in Jordan","students are enrolled in schools in Jordan"],["Students in remote areas","students live in remote areas of Jordan"],["Students not in school (%)","of students in Jordan do not go to school"]];
+let ST=clone(STATS0),SRC=clone(SRCS0);
+try{const a=JSON.parse(localStorage.getItem("muakhah-stats")||"null");if(Array.isArray(a))ST=a}catch(e){}
+try{const a=JSON.parse(localStorage.getItem("muakhah-srcs")||"null");if(Array.isArray(a))SRC=a}catch(e){}
+const stSave=()=>{try{localStorage.setItem("muakhah-stats",JSON.stringify(ST));localStorage.setItem("muakhah-srcs",JSON.stringify(SRC))}catch(e){}};
+const tile=t=>`<div class="tile"><b>${esc(t.v||"?")}</b><span>${esc(t.l||"")}</span>${t.s?`<em>${esc(t.s)}</em>`:""}</div>`;
+function rStats(){
+  $("#statTiles").innerHTML=ST.length?ST.map(tile).join(""):empty("No numbers yet.","Press Edit numbers to add your research.");
+  $("#homeTiles").innerHTML=ST.slice(0,3).map(tile).join("");$("#homeGap").hidden=!ST.length;
+  $("#srcL").innerHTML=SRC.map(x=>/^https?:\/\//i.test(x.u||"")?`<li><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t||x.u)}</a></li>`:`<li>${esc(x.t||"")}</li>`).join("")}
+function rStatEd(){
+  $("#statEd").innerHTML=`<p class="mini" style="margin-top:6px">Type the numbers from her research. Changes save as she types.</p>
+   <div class="opts" style="margin:10px 0 4px">${QUICK.map((q,i)=>`<button class="chip" data-sadd="${i}" type="button">+ ${esc(q[0])}</button>`).join("")}</div>`
+  +ST.map((t,i)=>`<div class="panel qb" style="box-shadow:none"><div class="qh"><span class="qn">${i+1}</span><input data-sf="v" data-si="${i}" value="${esc(t.v)}" maxlength="30" placeholder="Number, e.g. 2.1 million" aria-label="Number ${i+1}"><div class="qa"><button class="btn ghost sm" data-sdel="${i}" type="button" aria-label="Delete number">${svg("trash")}</button></div></div>
+     <input data-sf="l" data-si="${i}" value="${esc(t.l)}" maxlength="120" placeholder="What it measures, e.g. students are enrolled in Jordan" aria-label="Description ${i+1}">
+     <input data-sf="s" data-si="${i}" value="${esc(t.s||"")}" maxlength="120" placeholder="Source, e.g. Ministry of Education, 2025" aria-label="Source ${i+1}" style="margin-top:8px"></div>`).join("")
+  +`<button class="btn ghost sm" data-sadd="blank" type="button" style="margin-top:12px">+ Add a number</button>
+   <h3 class="rh">Sources</h3>`
+  +SRC.map((x,i)=>`<div class="panel qb" style="box-shadow:none"><div class="qh"><input data-uf="t" data-ui="${i}" value="${esc(x.t)}" maxlength="140" placeholder="Title, e.g. Ministry of Education report" aria-label="Source title" style="flex:1"><div class="qa"><button class="btn ghost sm" data-udel="${i}" type="button" aria-label="Delete source">${svg("trash")}</button></div></div>
+     <input data-uf="u" data-ui="${i}" value="${esc(x.u||"")}" maxlength="300" placeholder="Link (starts with https://)" aria-label="Source link"></div>`).join("")
+  +`<div class="row" style="margin-top:12px"><button class="btn ghost sm" data-uadd="1" type="button">+ Add a source</button><button class="btn ghost sm" data-sreset="1" type="button">Reset to the original numbers</button></div>`}
+document.addEventListener("input",e=>{const t=e.target,d=t.dataset||{};
+  if(d.sf){ST[+d.si][d.sf]=t.value;stSave();rStats()}
+  if(d.uf){SRC[+d.ui][d.uf]=t.value;stSave();rStats()}});
+$("#statF").addEventListener("submit",e=>{e.preventDefault();e.target.closest("dialog").close()});
+document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;
+  if(d.open==="statD")rStatEd();
+  if(d.sadd!==undefined){const q=QUICK[+d.sadd];ST.push(q?{v:"",l:q[1],s:""}:{v:"",l:"",s:""});stSave();rStats();rStatEd();const f=[...document.querySelectorAll('#statEd [data-sf="v"]')].pop();f&&(f.focus(),f.scrollIntoView({block:"center"}))}
+  if(d.sdel!==undefined){ST.splice(+d.sdel,1);stSave();rStats();rStatEd()}
+  if(d.uadd){SRC.push({t:"",u:""});stSave();rStats();rStatEd();const f=[...document.querySelectorAll('#statEd [data-uf="t"]')].pop();f&&(f.focus(),f.scrollIntoView({block:"center"}))}
+  if(d.udel!==undefined){SRC.splice(+d.udel,1);stSave();rStats();rStatEd()}
+  if(d.sreset&&confirm("Replace your numbers and sources with the original ones?")){ST=clone(STATS0);SRC=clone(SRCS0);stSave();rStats();rStatEd()}});
+rStats();
+
+/* ---------- editable "Why do children leave school?" ---------- */
+const REASONS0=B.reasons||[{t:"Child labour",d:"Some children work instead of studying, to earn money for their family.",c:"#C9401F"},{t:"Money problems at home",d:"When a household is under economic stress, school can feel like a luxury.",c:"#B7791F"},{t:"Early marriage",d:"Girls at risk of early marriage are one of the groups most likely to leave.",c:"#D6336C"},{t:"Distance and transport",d:"In remote areas, long walks and little public transport make school hard to reach.",c:"#2F6FDE"},{t:"Limited support in school",d:"Children with disabilities have less access to inclusive education, and some face violence at school.",c:"#8A4FD6"}];
+const RHEAD0=B.rhead||{t:"Why do children leave school?",i:"Reports name several reasons. Many are about money and distance, not about wanting to learn."};
+const RCOL=[["Red","#C9401F"],["Gold","#B7791F"],["Pink","#D6336C"],["Blue","#2F6FDE"],["Purple","#8A4FD6"],["Green","#1B7F5E"]];
+let RS=clone(REASONS0),RH=clone(RHEAD0);
+try{const a=JSON.parse(localStorage.getItem("muakhah-reasons")||"null");if(Array.isArray(a))RS=a}catch(e){}
+try{const a=JSON.parse(localStorage.getItem("muakhah-rhead")||"null");if(a&&typeof a.t==="string")RH=a}catch(e){}
+const rSave=()=>{try{localStorage.setItem("muakhah-reasons",JSON.stringify(RS));localStorage.setItem("muakhah-rhead",JSON.stringify(RH))}catch(e){}};
+function rReasons(){
+  $("#rTitle").textContent=RH.t||"Reasons";$("#rIntro").textContent=RH.i||"";
+  $("#reasonL").innerHTML=RS.length?RS.map(r=>`<div class="reason" style="--c:${esc(r.c)}"><i></i><div><h3>${esc(r.t||"Untitled")}</h3><p>${esc(r.d||"")}</p></div></div>`).join(""):empty("No reasons yet.","Press Edit reasons to add some.")}
+function rReasonEd(){
+  $("#reasonEd").innerHTML=`<p class="mini" style="margin-top:6px">Change the heading, or edit, add and delete reasons. Changes save as she types.</p>
+   <label for="rh1">Heading</label><input id="rh1" data-rh="t" value="${esc(RH.t)}" maxlength="80">
+   <label for="rh2">Short intro</label><textarea id="rh2" data-rh="i" maxlength="240">${esc(RH.i)}</textarea>`
+  +RS.map((r,i)=>`<div class="panel qb" style="box-shadow:none"><div class="qh"><span class="qn" style="background:${esc(r.c)};color:#fff">${i+1}</span>
+     <select data-rf="c" data-ri="${i}" aria-label="Colour">${RCOL.map(c=>`<option value="${c[1]}"${c[1]===r.c?" selected":""}>${c[0]}</option>`).join("")}</select>
+     <div class="qa"><button class="btn ghost sm" data-rdel="${i}" type="button" aria-label="Delete reason">${svg("trash")}</button></div></div>
+     <input data-rf="t" data-ri="${i}" value="${esc(r.t)}" maxlength="60" placeholder="Reason, e.g. Child labour" aria-label="Reason ${i+1}">
+     <textarea data-rf="d" data-ri="${i}" maxlength="200" placeholder="Explain it in one or two sentences" aria-label="Description ${i+1}" style="margin-top:8px;min-height:64px">${esc(r.d)}</textarea></div>`).join("")
+  +`<div class="row" style="margin-top:12px"><button class="btn ghost sm" data-radd="1" type="button">+ Add a reason</button><button class="btn ghost sm" data-rreset="1" type="button">Reset to the original reasons</button></div>`}
+document.addEventListener("input",e=>{const t=e.target,d=t.dataset||{};
+  if(d.rh){RH[d.rh]=t.value;rSave();rReasons()}
+  if(d.rf){RS[+d.ri][d.rf]=t.value;rSave();rReasons();if(d.rf==="c"){const n=t.closest(".qb").querySelector(".qn");n.style.background=t.value}}});
+$("#reasonF").addEventListener("submit",e=>{e.preventDefault();e.target.closest("dialog").close()});
+document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;
+  if(d.open==="reasonD")rReasonEd();
+  if(d.radd){RS.push({t:"",d:"",c:RCOL[RS.length%RCOL.length][1]});rSave();rReasons();rReasonEd();const f=[...document.querySelectorAll('#reasonEd [data-rf="t"]')].pop();f&&(f.focus(),f.scrollIntoView({block:"center"}))}
+  if(d.rdel!==undefined){RS.splice(+d.rdel,1);rSave();rReasons();rReasonEd()}
+  if(d.rreset&&confirm("Replace the heading and reasons with the original ones?")){RS=clone(REASONS0);RH=clone(RHEAD0);rSave();rReasons();rReasonEd()}});
+rReasons();
+
+/* ---------- navigation ---------- */
+function go(t){
+  if(GRP[t])last[GRP[t]]=t;
+  document.querySelectorAll(".sec").forEach(x=>x.classList.toggle("on",x.id==="s-"+t));
+  document.querySelectorAll(".dtabs [data-tab],.bnav [data-tab]").forEach(b=>{b.dataset.tab===tabOf(t)?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current")});
+  document.querySelectorAll("[data-seg] [data-tab]").forEach(b=>{b.dataset.tab===t?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current")});
+  if(t==="survey")rSurvey();
+  window.scrollTo({top:0,behavior:"auto"});
+  try{history.replaceState(null,"","#"+t)}catch(e){}}
+document.addEventListener("click",e=>{
+  if(e.target.tagName==="DIALOG"&&e.target.open){e.target.close();return}
+  const b=e.target.closest("button");if(!b)return;const d=b.dataset;
+  if(d.tab){go(last[d.tab]||d.tab);if(d.focus)setTimeout(()=>$("#"+d.focus).focus(),80)}
+  if(d.open){const dg=$("#"+d.open);prefill();try{dg.showModal()}catch(x){dg.setAttribute("open","")}setTimeout(()=>{const f=[...dg.querySelectorAll("input,textarea")].find(i=>!i.value);f&&f.focus()},60)}
+  if(d.close)b.closest("dialog").close();
+  if(d.f){flt=d.f;rRes()}
+  if(d.del){const p=d.del.split(":"),k=p[0],i=+p[1],item=S[k].splice(i,1)[0];save();all();toast("Entry deleted","Undo",()=>{S[k].splice(i,0,item);save();all()})}
+  if(d.undo&&undoFn){const f=undoFn;undoFn=null;f();toast("Restored")}
+  if(d.help){const h=S.help[d.help];h.c++;h.me=1;save();rHelp();toast("Offer sent (demo only)")}
+  if(d.like){const k=S.idea[d.like];k.l++;k.me=1;save();rIdea()}
+  if(d.xm){const x=S.xch[d.xm],y=S.xch.find(z=>z.o===x.w&&z.w===x.o);if(y)copyText(`Hi ${y.by}, I’m ${x.by}. I can teach ${x.o} and I want to learn ${x.w}. Want to swap?`,"Intro message copied")}
+  if(b.id==="demoBtn"){S.demo?removeDemo():loadDemo()}
+  if(b.id==="reset"){if(confirm("Clear everything on this device (your entries, demo data, survey questions and answers)?")){S=EMPTY();SV={title:"",qs:[]};SR=[];save();svSave();srSave();all();paintDemo();rSurvey();$("#pairR").innerHTML='<div class="empty" id="pairE">Your match will appear here.<br><span class="small">Fill in the form and press <b>Find my partner</b>.</span></div>';toast("All cleared")}}
+  if(d.say){const i=$("#tl"),v=i.value.trim();if(!v)return;const c=$("#chat");c.insertAdjacentHTML("beforeend",`<div class="bub me">${esc(v)}</div>`);i.value="";
+    setTimeout(()=>{c.insertAdjacentHTML("beforeend",`<div class="bub them">Thank you! Tomorrow I will share something from my school. (Demo reply from ${esc(CHAT.who)})</div>`)},900)}
+  if(d.copy)copyText($("#draft").textContent,"Message copied");
+  if(d.share){const m=$("#draft").textContent;if(navigator.share){navigator.share({text:m}).catch(()=>{})}else copyText(m,"Copied. Paste it into your social app.")}
+  /* survey */
+  if(d.sv){svMode=d.sv;rSurvey()}
+  if(d.addq){SV.qs.push({id:qid(),t:"",type:"text",o:"",req:0});svSave();rSurvey();const l=[...document.querySelectorAll('#svBody input[data-qf="t"]')].pop();l&&(l.focus(),l.scrollIntoView({block:"center",behavior:"smooth"}))}
+  if(d.qdel!==undefined){const i=+d.qdel,q=SV.qs.splice(i,1)[0];svSave();rSurvey();toast("Question deleted","Undo",()=>{SV.qs.splice(i,0,q);svSave();rSurvey()})}
+  if(d.qup!==undefined){const i=+d.qup;if(i>0){SV.qs.splice(i-1,0,SV.qs.splice(i,1)[0]);svSave();rSurvey()}}
+  if(d.qdown!==undefined){const i=+d.qdown;if(i<SV.qs.length-1){SV.qs.splice(i+1,0,SV.qs.splice(i,1)[0]);svSave();rSurvey()}}
+  if(d.clrr){if(confirm("Delete all collected answers? Your questions stay.")){SR=[];srSave();rSurvey();toast("Responses cleared")}}
+  if(d.csv){const q=v=>'"'+String(v).replace(/"/g,'""')+'"';
+    const rows=[["Submitted"].concat(SV.qs.map(x=>x.t||"Untitled question"))].concat(SR.map(r=>[new Date(r.at).toISOString()].concat(SV.qs.map(x=>{const v=r.a[x.id];return Array.isArray(v)?v.join("; "):(v===undefined?"":v)}))));
+    const blob=new Blob([rows.map(r=>r.map(q).join(",")).join("\n")],{type:"text/csv"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="muakhah-survey.csv";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+});
+function copyText(t,m){try{navigator.clipboard.writeText(t).then(()=>toast(m),()=>toast("Copy failed. Select the text instead."))}catch(e){toast("Copy failed. Select the text instead.")}}
+function add(form,nameId,fn){$(form).addEventListener("submit",e=>{e.preventDefault();rememberName($(nameId).value);fn();save();all();e.target.reset();$("#xw").selectedIndex=1;e.target.closest("dialog").close();toast("Added. Thank you for sharing!")})}
+add("#resF","#rb",()=>{S.res.unshift({t:$("#rt").value,sub:$("#rs").value,kind:$("#rk").value,n:$("#rn").value,by:$("#rb").value.trim()});flt="All"});
+add("#helpF","#hn",()=>{S.help.unshift({t:$("#ht").value,cat:$("#hc").value,by:$("#hn").value.trim(),c:0,me:0})});
+add("#ideaF","#in",()=>{S.idea.unshift({t:$("#it").value,by:$("#in").value.trim(),l:0,me:0})});
+add("#xchF","#xn",()=>{S.xch.unshift({o:$("#xo").value,w:$("#xw").value,by:$("#xn").value.trim(),t:$("#xt").value})});
+
+let CHAT={who:"your partner"};
+/* ---------- pairing (demo partners are made up) ---------- */
+const POOL=[
+{n:"Amara",w:"remote",o:"Local stories",l:"English reading",p:"a school two hours from the nearest town"},
+{n:"Tariq",w:"remote",o:"Maths",l:"Science",p:"a mountain village school"},
+{n:"Lupe",w:"remote",o:"Art",l:"Languages",p:"a river-island school"},
+{n:"Sana",w:"remote",o:"Local stories",l:"Maths",p:"a desert-edge school"},
+{n:"Noah",w:"intl",o:"English reading",l:"Local stories",p:"an international school"},
+{n:"Mei",w:"intl",o:"Science",l:"Maths",p:"an international school"},
+{n:"Elena",w:"intl",o:"Languages",l:"Art",p:"an international school"},
+{n:"Kofi",w:"intl",o:"Maths",l:"Local stories",p:"an international school"}];
+$("#pairF").addEventListener("submit",e=>{
+  e.preventDefault();
+  const me=$("#pn").value.trim();rememberName(me);const w=$("#pw").value,o=$("#pt").value,l=$("#pl").value,fam=$("#pk").value==="family";
+  let best=null,bs=-1;
+  POOL.forEach(p=>{if(p.w===w)return;const s=(p.o===l?2:0)+(p.l===o?2:0);if(s>bs){bs=s;best=p}});
+  const tags=tag(best.o===l?"Can teach you "+l:best.o+" is on offer",best.o===l)+tag(best.l===o?"Wants to learn "+o:"Wants "+best.l,best.l===o)+tag(best.p);
+  const who=fam?best.n+"’s family":best.n;
+  const msg=`Hi ${who}, I’m ${me}${fam?" and my family are":""} from ${w==="intl"?"an international school":"a school in a remote area"}. I can share ${o} and I would love to learn ${l}. Want to swap? (Sent with my teacher’s OK.)`;
+  const head=bs>=4?"A full match":bs>0?"A partial match":"A good start";
+  const txt=bs>=4?"You each have what the other wants.":bs>0?"You can still swap and learn something new.":"No exact match in the demo yet, but this partner is a good start.";
+  $("#pairR").innerHTML=`<article class="panel card ${bs>=4?"match":""}" style="padding:20px"><div class="pairing">${av(me,1)}<span class="line"></span>${av(best.n,1)}</div><h3 style="text-align:center;font-size:22px">Meet ${esc(who)}</h3><p style="text-align:center;color:var(--mut);margin:4px 0 12px"><b style="color:${bs>=4?"var(--leaf)":"var(--ink)"}">${head}.</b> ${txt}</p><div class="tags" style="justify-content:center">${tags}</div><div class="msg" id="draft">${esc(msg)}</div><div class="row"><button class="btn sm" data-copy="1" type="button">Copy message</button><button class="btn ghost sm" data-share="1" type="button">Share on social</button></div><h3 class="rh">Share what you learned today</h3><div class="chat" id="chat" aria-live="polite"></div><div class="composer"><input id="tl" maxlength="120" placeholder="Today in maths I learned…" aria-label="What did you learn today?"><button class="btn sm" data-say="1" type="button">Send</button></div><p class="small" style="margin-top:12px">Demo partners are made-up examples. Nothing is really sent.</p></article>`;
+  CHAT={who:best.n,fam};
+  if(matchMedia("(max-width:759px)").matches)$("#pairR").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+/* ---------- journey ---------- */
+const VIDEO_URL="";    // optional: paste a YouTube link (or a .mp4 link) to show her journey video
+(function(){
+  const v=$("#video");let h="";
+  const yt=VIDEO_URL.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
+  if(yt)h=`<iframe src="https://www.youtube.com/embed/${yt[1]}" title="My journey video" allowfullscreen loading="lazy"></iframe>`;
+  else if(/\.mp4(\?|$)/i.test(VIDEO_URL))h=`<video src="${esc(VIDEO_URL)}" controls playsinline></video>`;
+  v.innerHTML=h||"<div><b>Journey video</b><br>Coming soon.</div>";if(h){v.style.border="0"}
+  ["rf1","rf2","rf3"].forEach(id=>{const t=$("#"+id);try{t.value=localStorage.getItem("muakhah-"+id)||(B.reflect&&B.reflect[id])||""}catch(e){}
+    t.addEventListener("input",()=>{try{localStorage.setItem("muakhah-"+id,t.value)}catch(e){}})});
+})();
+
+
+/* ---------- save / load her changes as a file ---------- */
+function exportData(){
+  const own=EMPTY();GROUPS.forEach(k=>{own[k]=S[k].filter(x=>!x.d)});delete own.demo;
+  const reflect={};["rf1","rf2","rf3"].forEach(id=>{reflect[id]=$("#"+id).value});
+  const o={app:"muakhah",version:1,saved:new Date().toISOString(),stats:ST,sources:SRC,reasons:RS,rhead:RH,survey:SV,entries:own,reflect};
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(o,null,2)],{type:"application/json"}));
+  a.download="muakhah-my-changes.json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+  toast("Saved. Keep this file and send it back to get your updated website.")}
+function importData(o){
+  if(!o||o.app!=="muakhah")throw new Error("Not a Mu'akhah file");
+  if(Array.isArray(o.stats))ST=o.stats;if(Array.isArray(o.sources))SRC=o.sources;
+  if(Array.isArray(o.reasons))RS=o.reasons;if(o.rhead&&typeof o.rhead.t==="string")RH=o.rhead;
+  if(o.survey&&Array.isArray(o.survey.qs))SV=o.survey;
+  if(o.entries){S=Object.assign(EMPTY(),o.entries,{demo:0})}
+  if(o.reflect)["rf1","rf2","rf3"].forEach(id=>{const v=o.reflect[id]||"";$("#"+id).value=v;try{localStorage.setItem("muakhah-"+id,v)}catch(e){}});
+  stSave();rSave();svSave();save();rStats();rReasons();rSurvey();all();paintDemo();
+  toast("Your saved changes are loaded.")}
+$("#saveBtn").addEventListener("click",exportData);
+$("#loadBtn").addEventListener("click",()=>$("#loadFile").click());
+$("#loadFile").addEventListener("change",e=>{const f=e.target.files[0];e.target.value="";if(!f)return;
+  const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o||o.app!=="muakhah")throw 0;
+    if(confirm("Replace what is on this device with the saved file?"))importData(o)}catch(x){toast("That file is not a Mu'akhah save file.")}};r.readAsText(f)});
+
+prefill();paintDemo();
+/* open a tab from the URL hash (e.g. #survey) */
+const hh=(location.hash||"").slice(1),MAP={xch:"pair",res:"lib",proj:"problem"};
+const target=MAP[hh]||hh;if(["pair","lib","help","idea","problem","survey","journey"].indexOf(target)>-1)go(target);
+</script>
+</body>
+</html>
